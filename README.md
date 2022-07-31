@@ -1,11 +1,16 @@
 Telegram-bot for determine the type of bearing.
 
 Necessary packages for the bot to work:
+
 aiogram;
+
 tensorflow;
+
 opencv-python.
 
+
 Setting up the environment for the bot:
+
 Use folowing commands:
 
 python -m venv (your venv name)
