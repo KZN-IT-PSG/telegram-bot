@@ -7,7 +7,7 @@ import pickle
 import os
 import cv2
 
-IMAGE_SIZE = 32
+IMAGE_SIZE = 64
 PATH = 'img/am.jpg'
 bot = Bot(os.environ.get('TOKEN'))
 dp = Dispatcher(bot)
@@ -16,7 +16,7 @@ dp = Dispatcher(bot)
 names = ['Подшипник-3612 (Роликовый подшипник).', 'Игольчатый подшибник.', 'Шариковый подшипник.']
 
 
-def predict(path):
+def _predict(path):
     image = cv2.imread(path)
     output = image.copy()
     image = cv2.resize(image, (IMAGE_SIZE, IMAGE_SIZE))
@@ -51,7 +51,7 @@ async def start_message(message):
 async def photo_predict(message):
     await bot.send_message(message.from_user.id, 'Фото обрабатывается...')
     await message.photo[-1].download(PATH)
-    await message.reply(predict(PATH))
+    await message.reply(_predict(PATH))
 
 
 def main():
